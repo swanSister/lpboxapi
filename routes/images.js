@@ -38,7 +38,7 @@ var upload = function (req, res) {
     });
     return deferred.promise;
   };
-  router.post('/chat/:filename', async function(req, res, next) {
+  router.post('/:filename', async function(req, res, next) {
     req.folderName = 'lp'
     upload(req, res).then(async function (file) {
       let lpId = file.name.split('_')[0]
