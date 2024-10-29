@@ -3,6 +3,7 @@ var router = express.Router()
 const sql = require('../query.js')
 router.use(express.json())
 
+console.log("get lp!!!")
 router.get('/test/get', async function(req, res){
 	let q = `SELECT * FROM lp_list`
 	let rest = await sql(q)
@@ -44,6 +45,7 @@ router.post('/getLpList', async function(req, res){
 	}
 })
 
+console.log("get lp2!!!")
 
 
 module.exports = router;
