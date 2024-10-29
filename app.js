@@ -6,6 +6,7 @@ var cors = require('cors');
 const lp = require('./routes/lp')
 const images = require('./routes/images')
 
+console.log("@@@###@")
 app.use(cors())
 app.use('/lp', lp);
 app.use('/images', images);
