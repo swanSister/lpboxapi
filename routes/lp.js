@@ -40,12 +40,8 @@ router.post('/getAllLpList', async function(req, res){
 		let imgList = JSON.parse(q_res.data[i].imgList)
 		if(imgList.length){
 			for(var j in imgList){
+				console.log("imgList[j]",imgList[j])
 				let filePath = imgList[j].replace('http://52.79.215.83','.')
-				try {
-					fs.unlinkSync(filePath)
-				  } catch (err) {
-					console.error(err)
-				  }
 			}
 		}
 	}
