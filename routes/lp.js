@@ -15,11 +15,13 @@ router.post('/create', async function(req, res){
 	//test insert user
 	let	imgList=[]
 	let body = req.body
-	
+	console.log("body",req.body)
 	//Insert to user
 	let q = `INSERT INTO lp_list VALUES ('${body.lpId}', ${body.name}, '${body.singer}', 
 	'${body.releaseDate}','${body.description}','${body.price}','${body.genre}', 
 	 '${JSON.stringify(imgList)}', UTC_TIMESTAMP(), UTC_TIMESTAMP())`
+
+	 console.log(q)
 	var q_res = await sql(q)
 	if(q_res.success){
 		res.status(200).json({data:body})
