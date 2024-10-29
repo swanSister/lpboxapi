@@ -37,7 +37,7 @@ router.post('/getAllLpList', async function(req, res){
 	let q_res = await sql(`SELECT * FROM lp_list`)
 
 	for(var i in q_res.data){
-		let imgList = JSON.parse(commentList.data[i].imgList)
+		let imgList = JSON.parse(q_res.data[i].imgList)
 		if(imgList.length){
 			for(var j in imgList){
 				let filePath = imgList[j].replace('http://52.79.215.83','.')
