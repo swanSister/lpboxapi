@@ -10,6 +10,7 @@ router.get('/test/get', async function(req, res){
 })
 
 router.post('/create', async function(req, res){
+	console.log("create test!!!")
 	//test insert user
 	let	imgList=[]
 	let body = req.body
