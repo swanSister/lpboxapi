@@ -107,7 +107,7 @@ router.post('/deleteImgById', async function(req, res){
 			  }
 		}
 	}
-	let q_res = await sql(`UPDATE lp_list SET imgList = ${JSON.stringify([])} WHERE lpId='${body.lpId}'`)
+	let q_res = await sql(`UPDATE lp_list SET imgList = '${JSON.stringify([])}' WHERE lpId='${body.lpId}'`)
 	if(q_res.success){
 		res.status(200).json({data:q_res.data})
 	}else{
