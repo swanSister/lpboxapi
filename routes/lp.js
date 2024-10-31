@@ -65,7 +65,7 @@ router.post('/updateById', async function(req, res){
 	description=${body.description},
 	price=${body.price},
 	genre=${body.genre},
-	imgList=${JSON.stringify(body.imgList)},
+	imgList=${JSON.stringify(body.imgList)}
 	WHERE lpId='${body.lpId}'`
 
 	console.log(q)
