@@ -4,7 +4,6 @@ const sql = require('../query.js')
 router.use(express.json())
 const SITE_URL = "http://52.79.215.83"
 
-console.log("get lp!!!")
 router.get('/test/get', async function(req, res){
 	let q = `SELECT * FROM lp_list`
 	let rest = await sql(q)
@@ -15,13 +14,11 @@ router.post('/create', async function(req, res){
 	//test insert user
 	let	imgList=[]
 	let body = req.body
-	console.log("body",req.body)
 	//Insert to user
 	let q = `INSERT INTO lp_list VALUES ('${body.lpId}', '${body.name}', '${body.singer}', 
 	'${body.releaseDate}','${body.description}','${body.price}','${body.genre}', 
 	 '${JSON.stringify(imgList)}', UTC_TIMESTAMP(), UTC_TIMESTAMP())`
 
-	 console.log(q)
 	var q_res = await sql(q)
 	if(q_res.success){
 		console.log("success!")
@@ -41,7 +38,6 @@ router.post('/getAllLpList', async function(req, res){
 		let imgList = JSON.parse(q_res.data[i].imgList)
 		if(imgList && imgList.length){
 			for(var j in imgList){
-				console.log("imgList[j]",imgList[j])
 				let filePath = imgList[j].replace(SITE_URL,'.')
 			}
 		}
@@ -82,8 +78,10 @@ router.post('/deleteById', async function(req, res){
 		for(var i in body.imgList){
 			let filePath = body.imgList[i].url.replace(SITE_URL,'.')
 			try {
+				console.log(filePath)
 				fs.unlinkSync(filePath)
 			  } catch (err) {
+				console.log("file 삭제 에러1!!")
 				console.error(err)
 			  }
 		}
