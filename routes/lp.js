@@ -74,6 +74,7 @@ router.post('/updateById', async function(req, res){
 })
 router.post('/deleteById', async function(req, res){
 	let body = req.body
+	console.log(body.imgList)
 	if(body.imgList && body.imgList.length){
 		for(var i in body.imgList){
 			let filePath = body.imgList[i].url.replace(SITE_URL,'.')
