@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 const sql = require('../query.js')
 router.use(express.json())
-const SITE_URL = "http://52.79.215.83"
+const SITE_URL = "http://52.79.215.83:3002"
 
 router.get('/test/get', async function(req, res){
 	let q = `SELECT * FROM lp_list`
@@ -77,7 +77,7 @@ router.post('/deleteById', async function(req, res){
 	console.log(body.imgList)
 	if(body.imgList && body.imgList.length){
 		for(var i in body.imgList){
-			let filePath = body.imgList[i].url.replace(SITE_URL,'.')
+			let filePath = body.imgList[i].replace(SITE_URL,'.')
 			try {
 				console.log(filePath)
 				fs.unlinkSync(filePath)
@@ -98,7 +98,7 @@ router.post('/deleteImgById', async function(req, res){
 	let body = req.body
 	if(body.imgList && body.imgList.length){
 		for(var i in body.imgList){
-			let filePath = body.imgList[i].url.replace(SITE_URL,'.')
+			let filePath = body.imgList[i].replace(SITE_URL,'.')
 			try {
 				fs.unlinkSync(filePath)
 			  } catch (err) {
