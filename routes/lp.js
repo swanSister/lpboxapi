@@ -3,6 +3,7 @@ var router = express.Router()
 const sql = require('../query.js')
 router.use(express.json())
 const SITE_URL = "http://52.79.215.83:3002"
+const fs = require('fs');
 
 router.get('/test/get', async function(req, res){
 	let q = `SELECT * FROM lp_list`
