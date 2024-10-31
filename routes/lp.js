@@ -39,7 +39,7 @@ router.post('/getAllLpList', async function(req, res){
 
 	for(var i in q_res.data){
 		let imgList = JSON.parse(q_res.data[i].imgList)
-		if(imgList.length){
+		if(imgList && imgList.length){
 			for(var j in imgList){
 				console.log("imgList[j]",imgList[j])
 				let filePath = imgList[j].replace(SITE_URL,'.')
@@ -80,7 +80,7 @@ router.post('/updateById', async function(req, res){
 })
 router.post('/deleteById', async function(req, res){
 	let body = req.body
-	if(body.imgList.length){
+	if(body.imgList && body.imgList.length){
 		for(var i in body.imgList){
 			let filePath = body.imgList[i].url.replace(SITE_URL,'.')
 			try {
@@ -99,7 +99,7 @@ router.post('/deleteById', async function(req, res){
 })
 router.post('/deleteImgById', async function(req, res){
 	let body = req.body
-	if(body.imgList.length){
+	if(body.imgList && body.imgList.length){
 		for(var i in body.imgList){
 			let filePath = body.imgList[i].url.replace(SITE_URL,'.')
 			try {
