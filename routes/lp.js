@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 const sql = require('../query.js')
 router.use(express.json())
+const SITE_URL = "http://52.79.215.83"
 
 console.log("get lp!!!")
 router.get('/test/get', async function(req, res){
@@ -41,7 +42,7 @@ router.post('/getAllLpList', async function(req, res){
 		if(imgList.length){
 			for(var j in imgList){
 				console.log("imgList[j]",imgList[j])
-				let filePath = imgList[j].replace('http://52.79.215.83','.')
+				let filePath = imgList[j].replace(SITE_URL,'.')
 			}
 		}
 	}
@@ -56,7 +57,24 @@ router.post('/getAllLpList', async function(req, res){
 	}
 })
 
-console.log("get lp2!!!")
-
+router.post('/deleteById', async function(req, res){
+	let body = req.body
+	if(body.imgList.length){
+		for(var i in body.imgList){
+			let filePath = body.imgList[i].url.replace(SITE_URL,'.')
+			try {
+				fs.unlinkSync(filePath)
+			  } catch (err) {
+				console.error(err)
+			  }
+		}
+	}
+	let q_res = await sql(`DELETE FROM lp_list WHERE lpId='${body.lpId}'`)
+	if(q_res.success){
+		res.status(200).json({data:q_res.data})
+	}else{
+		res.status(403).send({message:q_res.errorMessage})
+	}
+})
 
 module.exports = router;
