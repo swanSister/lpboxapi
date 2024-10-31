@@ -58,7 +58,13 @@ router.post('/getAllLpList', async function(req, res){
 })
 router.post('/updateById', async function(req, res){
 	let body = req.body
-	let q = `UPDATE lp_list SET name = ${body.name}, singer = ${body.singer}, releaseDate = ${body.releaseDate}, description = ${body.description}, price = ${body.price}, genre = ${body.genre}, imgList = ${JSON.stringify(body.imgList)} WHERE lpId =${body.lpId}`
+	let q = `UPDATE lp_list SET name = '${body.name}', 
+	singer = '${body.singer}', 
+	releaseDate = '${body.releaseDate}', 
+	description = '${body.description}', 
+	price = '${body.price}', 
+	genre = '${body.genre}', 
+	imgList = '${JSON.stringify(body.imgList)}' WHERE lpId = '${body.lpId}'`
 
 	console.log(q)
 	var q_res = await sql(q)
