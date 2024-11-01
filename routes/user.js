@@ -22,7 +22,7 @@ router.post('/create', async function(req, res){
 	}
 })
 
-router.post('/getAllUsert', async function(req, res){
+router.post('/getAllUser', async function(req, res){
 	let body = req.body
 
 	let q_res = await sql(`SELECT * FROM user_list`)
