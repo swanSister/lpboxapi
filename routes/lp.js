@@ -33,7 +33,7 @@ router.post('/create', async function(req, res){
 router.post('/getAllLpList', async function(req, res){
 	let body = req.body
 
-	let q_res = await sql(`SELECT * FROM lp_list WHERE userId=='${body.userId}'`)
+	let q_res = await sql(`SELECT * FROM lp_list WHERE userId='${body.userId}'`)
 
 	for(var i in q_res.data){
 		let imgList = JSON.parse(q_res.data[i].imgList)
