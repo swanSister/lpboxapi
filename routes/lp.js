@@ -16,7 +16,7 @@ router.post('/create', async function(req, res){
 	let	imgList=[]
 	let body = req.body
 	//Insert to user
-	let q = `INSERT INTO lp_list VALUES ('${body.lpId}', '${body.name}', '${body.singer}', 
+	let q = `INSERT INTO lp_list VALUES ('${body.lpId}', '${body.userId}', '${body.name}', '${body.singer}', 
 	'${body.releaseDate}','${body.description}','${body.price}','${body.genre}', 
 	 '${JSON.stringify(imgList)}', UTC_TIMESTAMP(), UTC_TIMESTAMP())`
 
@@ -33,7 +33,7 @@ router.post('/create', async function(req, res){
 router.post('/getAllLpList', async function(req, res){
 	let body = req.body
 
-	let q_res = await sql(`SELECT * FROM lp_list`)
+	let q_res = await sql(`SELECT * FROM lp_list WHERE userId=='${body.userId}'`)
 
 	for(var i in q_res.data){
 		let imgList = JSON.parse(q_res.data[i].imgList)
