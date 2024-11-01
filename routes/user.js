@@ -27,14 +27,6 @@ router.post('/getAllUser', async function(req, res){
 
 	let q_res = await sql(`SELECT * FROM user_list`)
 
-	for(var i in q_res.data){
-		let imgList = JSON.parse(q_res.data[i].imgList)
-		if(imgList && imgList.length){
-			for(var j in imgList){
-				let filePath = imgList[j].replace(SITE_URL,'.')
-			}
-		}
-	}
 	if(q_res.success){
 		if(q_res.data.length){
 			res.status(200).json({data:q_res.data})
