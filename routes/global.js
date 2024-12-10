@@ -1,7 +1,6 @@
-const API_URL = "http://52.79.215.83:3002"
-const WEB_URL = "http://52.79.215.83:3003"
-const URL = "http://52.79.215.83"
+const API_URL = "http://3.34.211.151:3002"
+const URL = "http://3.34.211.151"
 module.exports = {
   API_URL: API_URL,
-  WEB_URL: WEB_URL
 }
+
