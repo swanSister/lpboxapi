@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 const sql = require('../query.js')
 router.use(express.json())
-const SITE_URL = "http://52.79.215.83:3002"
+const SITE_URL = "http://3.34.211.151:3002"
 
 router.post('/create', async function(req, res){
 	//test insert user
